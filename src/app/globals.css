@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* More aggressive rule to hide the Next.js loading indicator */
+svg[data-next-mark-loading] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Hide Next.js DevTools and the "N" logo in dev mode (all known selectors) */
+[data-nextjs-devtools],
+[data-nextjs-devtools-root],
+nextjs-devtools,
+nextjs-portal,
+#nextjs__devtools {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}
+
+/* Try to hide DevTools if rendered inside Shadow DOM with part attribute */
+[data-nextjs-devtools]::part(root),
+[data-nextjs-devtools-root]::part(root) {
+  display: none !important;
+}
+
+/* Text shadow utility */
+.text-shadow {
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+/* Тень под header */
+.main-header {
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10), 0 1.5px 8px 0 rgba(0,0,0,0.07);
+}
