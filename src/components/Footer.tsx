@@ -15,13 +15,22 @@ const Footer = () => {
               Koterig OÜ
             </h3>
             <p
+              className="font-sans text-[18px] font-normal leading-[1.7] tracking-wide text-[#fafafa] mb-3"
+              style={{
+                wordSpacing: '0.3em',
+                letterSpacing: '0.02em'
+              }}
+            >
+              Проектируем. Строим. Сдаем.
+            </p>
+            <p
               className="font-sans text-[18px] font-normal leading-[1.7] tracking-wide text-[#fafafa]"
               style={{
                 wordSpacing: '0.3em',
                 letterSpacing: '0.02em'
               }}
             >
-              Проектируем. Строим. Сдаем. Ваш единственный подрядчик на всем пути от первого чертежа до ввода в эксплуатацию.
+              Ваш единственный подрядчик на всем пути от первого чертежа до ввода в эксплуатацию.
             </p>
           </div>
           <div className="text-center md:text-right md:justify-self-end">
