@@ -61,7 +61,11 @@ nextjs-portal,
   text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
 }
 
-/* Тень под header */
+/* Тень под header / над footer */
 .main-header {
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10), 0 1.5px 8px 0 rgba(0,0,0,0.07);
+}
+
+.main-footer {
+  box-shadow: 0 -4px 24px 0 rgba(0,0,0,0.10), 0 -1.5px 8px 0 rgba(0,0,0,0.07);
 }

@@ -4,7 +4,7 @@ import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#105483] text-[#fafafa] text-sm font-sans">
+    <footer className="main-footer bg-[#105483] text-[#fafafa] text-sm font-sans">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="text-center md:text-left">
