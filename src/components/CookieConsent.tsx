@@ -20,7 +20,7 @@ function setConsent(value: 'accepted' | 'rejected') {
 }
 
 const buttonBaseClass =
-  'w-full px-7 py-2 rounded-md text-sm md:text-base font-sans font-bold uppercase tracking-[0.04em] transition-colors duration-200';
+  'w-full px-7 py-2 rounded-md text-[15px] font-sans font-bold uppercase tracking-[0.04em] transition-colors duration-200';
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);

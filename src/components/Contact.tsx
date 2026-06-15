@@ -204,11 +204,12 @@ const Contact = () => {
                 type="submit"
                 disabled={isSubmitting}
                 whileTap={{ scale: 0.95 }}
-                className={`w-full py-3 rounded-lg font-medium font-sans transition-all duration-200 ${
-                  isSubmitting 
-                    ? 'bg-gray-400 text-gray-200 cursor-not-allowed' 
+                className={`w-full px-7 py-2 rounded-md text-sm md:text-base font-sans font-bold uppercase tracking-[0.04em] transition-colors duration-200 ${
+                  isSubmitting
+                    ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
                     : 'bg-[#105483] text-[#fafafa] hover:bg-[#0d4669] active:bg-[#0b3d5c]'
                 }`}
+                style={{ letterSpacing: '0.04em' }}
               >
                 {isSubmitting ? (
                   <motion.div
