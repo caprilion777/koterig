@@ -120,10 +120,10 @@ const SiteHeader = () => {
 
   return (
     <div
-      className="main-header fixed top-0 left-0 w-full z-50 bg-[#fafafa] text-[#105483] transition-none shadow-lg md:shadow-none"
+      className={`main-header fixed top-0 left-0 w-full z-50 bg-[#fafafa] text-[#105483] transition-none ${menuOpen ? 'md:shadow-none' : 'shadow-lg md:shadow-none'}`}
       style={{ backgroundColor: '#fafafa' }}
     >
-      <div className="container mx-auto flex justify-between items-center px-6 md:px-12 py-6 md:py-4 relative">
+      <div className="container mx-auto flex justify-between items-center px-6 md:px-12 py-6 md:py-4">
         <Link
           href="/"
           className="inline-flex items-center shrink-0"
@@ -132,9 +132,9 @@ const SiteHeader = () => {
           <Image
             src="/Koterig_Logo_Blue.svg"
             alt="Koterig"
-            width={115}
-            height={40}
-            className="h-8 w-auto md:h-10"
+            width={127}
+            height={44}
+            className="h-10 w-auto md:h-11"
             priority
             unoptimized
           />
@@ -143,7 +143,7 @@ const SiteHeader = () => {
         <div className="flex items-center min-h-10">
           <nav className="hidden md:flex items-center gap-6">
             <ul
-              className="flex gap-8 font-sans font-bold text-[1.125rem] tracking-[0.04em] uppercase"
+              className="flex gap-8 font-sans font-semibold text-[1.125rem] tracking-[0.04em] uppercase"
               style={{ letterSpacing: '0.04em' }}
             >
               <li>
@@ -200,51 +200,51 @@ const SiteHeader = () => {
             </button>
           )}
         </div>
+      </div>
 
-        {menuOpen && (
-          <div className="absolute left-0 right-0 top-full w-full bg-[#fafafa] py-5 flex flex-col items-center md:hidden z-40">
-            <nav className="mt-4 flex-1 flex flex-col gap-1 w-full items-center">
-              <Link
-                href="/portfolio"
-                className={`relative inline-block text-[1.125rem] font-sans font-bold uppercase tracking-[0.04em] py-2 px-2 rounded transition-colors text-center
+      {menuOpen && (
+        <div className="md:hidden w-full bg-[#fafafa] pt-5 pb-9 flex flex-col items-center">
+          <nav className="mt-4 flex flex-col gap-1 w-full items-center">
+            <Link
+              href="/portfolio"
+              className={`relative inline-block text-[1.125rem] font-sans font-semibold uppercase tracking-[0.04em] py-2 px-2 rounded transition-colors text-center
+                after:content-[''] after:block after:absolute after:left-0 after:bottom-1 after:h-[0.85px] after:bg-[#105483] after:w-full after:origin-center after:scale-x-0 after:transition-transform after:duration-300
+                ${isPortfolioPage ? 'after:scale-x-100' : 'hover:after:scale-x-100'}
+              `}
+              style={{ position: 'relative' }}
+              onClick={() => setMenuOpen(false)}
+            >
+              Портфолио
+            </Link>
+            {scrollSections.map(section => (
+              <a
+                key={section.id}
+                href={isHomePage ? `#${section.id}` : `/#${section.id}`}
+                className={`relative inline-block text-[1.125rem] font-sans font-semibold uppercase tracking-[0.04em] py-2 px-2 rounded transition-colors text-center
                   after:content-[''] after:block after:absolute after:left-0 after:bottom-1 after:h-[0.85px] after:bg-[#105483] after:w-full after:origin-center after:scale-x-0 after:transition-transform after:duration-300
-                  ${isPortfolioPage ? 'after:scale-x-100' : 'hover:after:scale-x-100'}
+                  ${isHomePage && active === section.id ? 'after:scale-x-100' : 'hover:after:scale-x-100'}
                 `}
                 style={{ position: 'relative' }}
-                onClick={() => setMenuOpen(false)}
+                onClick={e => handleHashNavClick(e, section.id)}
               >
-                Портфолио
-              </Link>
-              {scrollSections.map(section => (
-                <a
-                  key={section.id}
-                  href={isHomePage ? `#${section.id}` : `/#${section.id}`}
-                  className={`relative inline-block text-[1.125rem] font-sans font-bold uppercase tracking-[0.04em] py-2 px-2 rounded transition-colors text-center
-                    after:content-[''] after:block after:absolute after:left-0 after:bottom-1 after:h-[0.85px] after:bg-[#105483] after:w-full after:origin-center after:scale-x-0 after:transition-transform after:duration-300
-                    ${isHomePage && active === section.id ? 'after:scale-x-100' : 'hover:after:scale-x-100'}
-                  `}
-                  style={{ position: 'relative' }}
-                  onClick={e => handleHashNavClick(e, section.id)}
+                {section.label}
+              </a>
+            ))}
+            <div className="mt-4 flex items-center justify-center gap-3">
+              {languages.map(({ code, label, Flag }) => (
+                <button
+                  key={code}
+                  type="button"
+                  aria-label={label}
+                  className={flagButtonClass}
                 >
-                  {section.label}
-                </a>
+                  <Flag className="block h-[20px] w-[30px]" />
+                </button>
               ))}
-              <div className="mt-4 flex items-center justify-center gap-3">
-                {languages.map(({ code, label, Flag }) => (
-                  <button
-                    key={code}
-                    type="button"
-                    aria-label={label}
-                    className={flagButtonClass}
-                  >
-                    <Flag className="block h-[20px] w-[30px]" />
-                  </button>
-                ))}
-              </div>
-            </nav>
-          </div>
-        )}
-      </div>
+            </div>
+          </nav>
+        </div>
+      )}
     </div>
   );
 };

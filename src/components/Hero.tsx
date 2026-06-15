@@ -31,13 +31,19 @@ const Hero = () => {
       </div>
       <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
         <div
-          className="text-white text-center text-2xl md:text-3xl font-normal drop-shadow-lg px-6 md:px-8 mb-8 max-w-3xl mx-auto space-y-4"
+          className="text-white text-center drop-shadow-lg px-6 md:px-8 mb-8 max-w-4xl mx-auto space-y-4"
           style={{ textShadow: '0 4px 24px rgba(0,0,0,0.85), 0 1.5px 8px rgba(0,0,0,0.7)' }}
         >
-          <h1 className="font-normal">
+          <h1
+            className="font-sans font-bold uppercase text-[1.125rem] tracking-[0.04em]"
+            style={{ letterSpacing: '0.04em' }}
+          >
             Полный цикл проектирования и строительства - от первой концепции и рабочих чертежей до ввода объекта в эксплуатацию.
           </h1>
-          <p className="text-xl md:text-2xl font-normal">
+          <p
+            className="font-sans text-[18px] font-normal leading-[1.7] tracking-wide"
+            style={{ wordSpacing: '0.3em', letterSpacing: '0.02em' }}
+          >
             Один подрядчик на всём пути: полная ответственность, прозрачные сроки и никаких разрывов между этапами.
           </p>
         </div>

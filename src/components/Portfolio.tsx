@@ -25,8 +25,6 @@ const projects = [
   },
 ];
 
-const MENU_HEIGHT = 96;
-
 const textClass =
   'font-sans text-[18px] font-normal leading-[1.7] tracking-wide text-[#105483]';
 const textStyle = { wordSpacing: '0.3em', letterSpacing: '0.02em' } as const;
@@ -133,8 +131,9 @@ const Portfolio = ({ standalone = false }: PortfolioProps) => {
   return (
     <section
       id={standalone ? undefined : 'portfolio'}
-      className={`py-30 bg-[#fafafa] font-sans ${standalone ? 'min-h-screen' : 'scroll-mt-[25px] md:scroll-mt-[25px]'}`}
-      style={{ paddingTop: `${MENU_HEIGHT}px` }}
+      className={`bg-[#fafafa] font-sans scroll-mt-[25px] md:scroll-mt-[25px] min-h-screen pb-30 ${
+        standalone ? 'pt-[calc(7.5rem+25px)]' : 'py-30'
+      }`}
     >
       <div className="container mx-auto px-4">
         <motion.div
@@ -167,8 +166,7 @@ const Portfolio = ({ standalone = false }: PortfolioProps) => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="group relative w-full max-w-[440px] overflow-hidden rounded-xl cursor-pointer font-sans"
-                onClick={() => openProject(project)}
+                className="group relative w-full max-w-[440px] overflow-hidden rounded-xl font-sans"
               >
                 <img
                   src={project.images[0]}
@@ -184,8 +182,8 @@ const Portfolio = ({ standalone = false }: PortfolioProps) => {
                   </h3>
                 </div>
                 <button
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 px-5 py-2 bg-white/60 text-[#105483] font-semibold rounded-lg shadow-md hover:bg-[#f5f5f5] transition-colors duration-200"
-                  onClick={e => { e.stopPropagation(); openProject(project); }}
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 cursor-pointer px-5 py-2 bg-white text-[#105483] font-semibold rounded-lg shadow-md hover:bg-[#f5f5f5] transition-colors duration-200"
+                  onClick={() => openProject(project)}
                 >
                   Подробнее
                 </button>
