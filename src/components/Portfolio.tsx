@@ -1,35 +1,19 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
-const projects = [
-  {
-    id: 1,
-    title: 'Портфолио 1',
-    images: ['/portfolio/1.jpg', '/portfolio/11.jpg', '/portfolio/111.jpg'],
-  },
-  {
-    id: 2,
-    title: 'Портфолио 2',
-    images: ['/portfolio/2.jpg', '/portfolio/22.jpg', '/portfolio/222.jpg'],
-  },
-  {
-    id: 3,
-    title: 'Портфолио 3',
-    images: ['/portfolio/3.jpg', '/portfolio/33.jpg', '/portfolio/333.jpg'],
-  },
-  {
-    id: 4,
-    title: 'Портфолио 4',
-    images: ['/portfolio/4.jpg', '/portfolio/44.jpg', '/portfolio/444.jpg'],
-  },
+const projectImages = [
+  ['/portfolio/1.jpg', '/portfolio/11.jpg', '/portfolio/111.jpg'],
+  ['/portfolio/2.jpg', '/portfolio/22.jpg', '/portfolio/222.jpg'],
+  ['/portfolio/3.jpg', '/portfolio/33.jpg', '/portfolio/333.jpg'],
+  ['/portfolio/4.jpg', '/portfolio/44.jpg', '/portfolio/444.jpg'],
 ];
 
 const textClass =
   'font-sans text-[18px] font-normal leading-[1.7] tracking-wide text-[#105483]';
 const textStyle = { wordSpacing: '0.3em', letterSpacing: '0.02em' } as const;
 
-// SVG outline arrow (Instagram style)
 const ArrowOutline = ({ direction = 'left' }: { direction?: 'left' | 'right' }) => (
   <svg
     width="36"
@@ -38,7 +22,7 @@ const ArrowOutline = ({ direction = 'left' }: { direction?: 'left' | 'right' }) 
     fill="none"
     style={{
       transform: direction === 'right' ? 'scaleX(-1)' : undefined,
-      display: 'block'
+      display: 'block',
     }}
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -54,7 +38,6 @@ const ArrowOutline = ({ direction = 'left' }: { direction?: 'left' | 'right' }) 
   </svg>
 );
 
-// SVG outline close (Instagram style)
 const CloseOutline = () => (
   <svg
     width="36"
@@ -65,24 +48,8 @@ const CloseOutline = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <circle cx="18" cy="18" r="16" stroke="white" strokeWidth="2.2" fill="none" />
-    <line
-      x1="13"
-      y1="13"
-      x2="23"
-      y2="23"
-      stroke="white"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-    />
-    <line
-      x1="23"
-      y1="13"
-      x2="13"
-      y2="23"
-      stroke="white"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-    />
+    <line x1="13" y1="13" x2="23" y2="23" stroke="white" strokeWidth="2.2" strokeLinecap="round" />
+    <line x1="23" y1="13" x2="13" y2="23" stroke="white" strokeWidth="2.2" strokeLinecap="round" />
   </svg>
 );
 
@@ -90,20 +57,34 @@ type PortfolioProps = {
   standalone?: boolean;
 };
 
-const Portfolio = ({ standalone = false }: PortfolioProps) => {
-  const [selectedProject, setSelectedProject] = useState<any>(null);
-  const [currentImage, setCurrentImage] = useState(0);
-  const [imgLoading, setImgLoading] = useState(false); // добавлено состояние загрузки
+type SelectedProject = {
+  title: string;
+  images: string[];
+};
 
-  const openProject = (project: any) => {
+const Portfolio = ({ standalone = false }: PortfolioProps) => {
+  const t = useTranslations('portfolio');
+  const projectTitles = t.raw('projects') as Array<{ title: string }>;
+  const projects = projectTitles.map((p, i) => ({
+    id: i + 1,
+    title: p.title,
+    images: projectImages[i],
+  }));
+
+  const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [imgLoading, setImgLoading] = useState(false);
+
+  const openProject = (project: SelectedProject) => {
     setSelectedProject(project);
     setCurrentImage(0);
-    setImgLoading(true); // при открытии сразу ставим загрузку
+    setImgLoading(true);
   };
 
   const prevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setImgLoading(true); // ставим загрузку при смене
+    if (!selectedProject) return;
+    setImgLoading(true);
     setCurrentImage((prev) =>
       prev === 0 ? selectedProject.images.length - 1 : prev - 1
     );
@@ -111,7 +92,8 @@ const Portfolio = ({ standalone = false }: PortfolioProps) => {
 
   const nextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setImgLoading(true); // ставим загрузку при смене
+    if (!selectedProject) return;
+    setImgLoading(true);
     setCurrentImage((prev) =>
       prev === selectedProject.images.length - 1 ? 0 : prev + 1
     );
@@ -120,8 +102,8 @@ const Portfolio = ({ standalone = false }: PortfolioProps) => {
   useEffect(() => {
     if (!selectedProject) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') prevImage(e as any);
-      if (e.key === 'ArrowRight') nextImage(e as any);
+      if (e.key === 'ArrowLeft') prevImage(e as unknown as React.MouseEvent);
+      if (e.key === 'ArrowRight') nextImage(e as unknown as React.MouseEvent);
       if (e.key === 'Escape') setSelectedProject(null);
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -146,14 +128,10 @@ const Portfolio = ({ standalone = false }: PortfolioProps) => {
             className="font-sans font-bold uppercase text-[1.125rem] tracking-[0.04em] mb-4 text-[#105483]"
             style={{ letterSpacing: '0.04em' }}
           >
-            Наши проекты
+            {t('title')}
           </h2>
           <p className={`${textClass} max-w-4xl mx-auto text-left`} style={textStyle}>
-            Мы воплощаем сложные инженерные решения в качественные объекты. Каждый наш
-            <br />
-            проект - это результат строгого соблюдения строительных норм, использования надежных
-            <br />
-            технологий и полного контроля на всех этапах: от фундамента до сдачи в эксплуатацию.
+            {t('intro')}
           </p>
         </motion.div>
         <div className="mx-auto grid w-full max-w-[912px] grid-cols-1 gap-8 sm:grid-cols-2 justify-items-center">
@@ -185,7 +163,7 @@ const Portfolio = ({ standalone = false }: PortfolioProps) => {
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 cursor-pointer px-5 py-2 bg-white text-[#105483] font-semibold rounded-lg shadow-md hover:bg-[#f5f5f5] transition-colors duration-200"
                   onClick={() => openProject(project)}
                 >
-                  Подробнее
+                  {t('more')}
                 </button>
               </motion.div>
             ))}
@@ -203,32 +181,30 @@ const Portfolio = ({ standalone = false }: PortfolioProps) => {
           >
             <div
               className="relative flex flex-col items-center justify-center"
-              onClick={e => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()}
             >
-              {/* Стрелки outline поверх картинки */}
               {selectedProject.images.length > 1 && (
                 <>
                   <button
                     className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-0 m-0 bg-transparent border-none outline-none hover:scale-110 active:scale-95 transition-transform"
                     onClick={prevImage}
-                    aria-label="Предыдущее изображение"
+                    aria-label={t('prevImage')}
                   >
                     <ArrowOutline direction="left" />
                   </button>
                   <button
                     className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-0 m-0 bg-transparent border-none outline-none hover:scale-110 active:scale-95 transition-transform"
                     onClick={nextImage}
-                    aria-label="Следующее изображение"
+                    aria-label={t('nextImage')}
                   >
                     <ArrowOutline direction="right" />
                   </button>
                 </>
               )}
-              {/* Крестик outline поверх картинки */}
               <button
                 className="absolute top-3 right-3 z-20 p-0 m-0 bg-transparent border-none outline-none hover:scale-110 active:scale-95 transition-transform"
                 onClick={() => setSelectedProject(null)}
-                aria-label="Закрыть"
+                aria-label={t('close')}
               >
                 <CloseOutline />
               </button>
@@ -246,22 +222,23 @@ const Portfolio = ({ standalone = false }: PortfolioProps) => {
                   </div>
                 )}
               </div>
-              {/* Только точки-пагинация, без текста */}
               {selectedProject.images.length > 1 && (
                 <div
                   className="absolute z-20 left-1/2 -translate-x-1/2"
                   style={{ bottom: '2%', pointerEvents: 'none' }}
                 >
                   <div className="flex gap-1">
-                    {selectedProject.images.map((_: any, idx: number) => (
+                    {selectedProject.images.map((_, idx) => (
                       <span
                         key={idx}
-                        className={`block rounded-full transition-all duration-200 ${idx === currentImage
-                          ? 'bg-white opacity-100 w-1.5 h-1.5'
-                          : 'bg-white opacity-40 w-1.5 h-1.5'
-                          }`}
+                        className={`block rounded-full transition-all duration-200 ${
+                          idx === currentImage
+                            ? 'bg-white opacity-100 w-1.5 h-1.5'
+                            : 'bg-white opacity-40 w-1.5 h-1.5'
+                        }`}
                         style={{
-                          boxShadow: idx === currentImage ? '0 0 4px 1px rgba(0,0,0,0.18)' : undefined
+                          boxShadow:
+                            idx === currentImage ? '0 0 4px 1px rgba(0,0,0,0.18)' : undefined,
                         }}
                       />
                     ))}

@@ -1,24 +1,24 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import { HiMenu, HiX } from 'react-icons/hi';
+import type { Locale } from '@/i18n/routing';
 
-const scrollSections = [
-  { id: 'design', label: 'Услуги' },
-  { id: 'about-us', label: 'О нас' },
-  { id: 'contact', label: 'Контакты' },
-];
+const scrollSectionIds = ['design', 'about-us', 'contact'] as const;
 
-const languages = [
-  { code: 'et', label: 'Eesti', Flag: EstoniaFlag },
-  { code: 'ru', label: 'Русский', Flag: RussiaFlag },
-  { code: 'en', label: 'English', Flag: UkFlag },
+const languages: Array<{ code: Locale; labelKey: 'langEt' | 'langRu' | 'langEn'; Flag: typeof EstoniaFlag }> = [
+  { code: 'et', labelKey: 'langEt', Flag: EstoniaFlag },
+  { code: 'ru', labelKey: 'langRu', Flag: RussiaFlag },
+  { code: 'en', labelKey: 'langEn', Flag: UkFlag },
 ];
 
 const flagButtonClass =
   'overflow-hidden rounded-sm border border-[#105483]/15 shadow-[0_2px_6px_rgba(16,84,131,0.22),0_1px_2px_rgba(0,0,0,0.08)] transition-all hover:opacity-90 hover:shadow-[0_4px_12px_rgba(16,84,131,0.28),0_2px_4px_rgba(0,0,0,0.1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#105483]/40';
+
+const flagButtonActiveClass =
+  'ring-2 ring-[#105483]/50 ring-offset-1 ring-offset-[#fafafa]';
 
 const navLinkClass = (active: boolean) =>
   `relative pb-1 transition-all
@@ -61,9 +61,26 @@ function UkFlag({ className }: { className?: string }) {
 }
 
 const SiteHeader = () => {
+  const t = useTranslations('nav');
+  const locale = useLocale() as Locale;
   const pathname = usePathname();
+  const router = useRouter();
   const isPortfolioPage = pathname === '/portfolio';
   const isHomePage = pathname === '/';
+
+  const scrollSections = useMemo(
+    () =>
+      scrollSectionIds.map((id) => ({
+        id,
+        label:
+          id === 'design'
+            ? t('services')
+            : id === 'about-us'
+              ? t('about')
+              : t('contact'),
+      })),
+    [t]
+  );
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState('');
@@ -79,7 +96,7 @@ const SiteHeader = () => {
       return;
     }
 
-    window.location.href = `/#${id}`;
+    router.push(`/#${id}`);
   };
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -112,11 +129,28 @@ const SiteHeader = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHomePage]);
+  }, [isHomePage, scrollSections]);
 
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
+
+  const renderLanguageSwitcher = (flagSize: string) => (
+    <div className="flex items-center gap-2.5 pl-1">
+      {languages.map(({ code, labelKey, Flag }) => (
+        <Link
+          key={code}
+          href={pathname}
+          locale={code}
+          aria-label={t(labelKey)}
+          aria-current={locale === code ? 'true' : undefined}
+          className={`${flagButtonClass} ${locale === code ? flagButtonActiveClass : ''}`}
+        >
+          <Flag className={`block ${flagSize}`} />
+        </Link>
+      ))}
+    </div>
+  );
 
   return (
     <div
@@ -152,39 +186,28 @@ const SiteHeader = () => {
                   className={navLinkClass(isPortfolioPage)}
                   style={{ position: 'relative' }}
                 >
-                  Портфолио
+                  {t('portfolio')}
                 </Link>
               </li>
-              {scrollSections.map(section => (
+              {scrollSections.map((section) => (
                 <li key={section.id}>
                   <a
                     href={isHomePage ? `#${section.id}` : `/#${section.id}`}
                     className={navLinkClass(isHomePage && active === section.id)}
                     style={{ position: 'relative' }}
-                    onClick={e => handleHashNavClick(e, section.id)}
+                    onClick={(e) => handleHashNavClick(e, section.id)}
                   >
                     {section.label}
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="flex items-center gap-2.5 pl-1">
-              {languages.map(({ code, label, Flag }) => (
-                <button
-                  key={code}
-                  type="button"
-                  aria-label={label}
-                  className={flagButtonClass}
-                >
-                  <Flag className="block h-[18px] w-[27px]" />
-                </button>
-              ))}
-            </div>
+            {renderLanguageSwitcher('h-[18px] w-[27px]')}
           </nav>
           {!menuOpen && (
             <button
               className="md:hidden z-50 text-[#105483]"
-              aria-label="Открыть меню"
+              aria-label={t('openMenu')}
               onClick={() => setMenuOpen(true)}
             >
               <HiMenu size={27} />
@@ -193,7 +216,7 @@ const SiteHeader = () => {
           {menuOpen && (
             <button
               className="md:hidden z-50 text-[#105483]"
-              aria-label="Закрыть меню"
+              aria-label={t('closeMenu')}
               onClick={() => setMenuOpen(false)}
             >
               <HiX size={27} />
@@ -214,9 +237,9 @@ const SiteHeader = () => {
               style={{ position: 'relative' }}
               onClick={() => setMenuOpen(false)}
             >
-              Портфолио
+              {t('portfolio')}
             </Link>
-            {scrollSections.map(section => (
+            {scrollSections.map((section) => (
               <a
                 key={section.id}
                 href={isHomePage ? `#${section.id}` : `/#${section.id}`}
@@ -225,21 +248,24 @@ const SiteHeader = () => {
                   ${isHomePage && active === section.id ? 'after:scale-x-100' : 'hover:after:scale-x-100'}
                 `}
                 style={{ position: 'relative' }}
-                onClick={e => handleHashNavClick(e, section.id)}
+                onClick={(e) => handleHashNavClick(e, section.id)}
               >
                 {section.label}
               </a>
             ))}
             <div className="mt-4 flex items-center justify-center gap-3">
-              {languages.map(({ code, label, Flag }) => (
-                <button
+              {languages.map(({ code, labelKey, Flag }) => (
+                <Link
                   key={code}
-                  type="button"
-                  aria-label={label}
-                  className={flagButtonClass}
+                  href={pathname}
+                  locale={code}
+                  aria-label={t(labelKey)}
+                  aria-current={locale === code ? 'true' : undefined}
+                  className={`${flagButtonClass} ${locale === code ? flagButtonActiveClass : ''}`}
+                  onClick={() => setMenuOpen(false)}
                 >
                   <Flag className="block h-[20px] w-[30px]" />
-                </button>
+                </Link>
               ))}
             </div>
           </nav>

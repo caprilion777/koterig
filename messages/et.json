@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "title": "Koterig OÜ | Projekteerimine ja ehitus võtmedele",
+    "description": "Täielik projekteerimise ja ehituse tsükkel võtmedele — eskiisist kasutusloani. Üks partner kogu tee jooksul.",
+    "portfolioTitle": "Portfoolio | Koterig OÜ",
+    "portfolioDescription": "Meie projektid — Koterig OÜ"
+  },
+  "nav": {
+    "portfolio": "Portfoolio",
+    "services": "Teenused",
+    "about": "Meist",
+    "contact": "Kontakt",
+    "openMenu": "Ava menüü",
+    "closeMenu": "Sulge menüü",
+    "langEt": "Eesti",
+    "langRu": "Vene",
+    "langEn": "Inglise"
+  },
+  "hero": {
+    "title": "Täielik projekteerimise ja ehituse tsükkel — esimesest kontseptsioonist ja tööjoonistest kuni objekti kasutuselevõtuni.",
+    "subtitle": "Üks partner kogu tee jooksul: täielik vastutus, läbipaistvad tähtajad ja katkestusteta protsess.",
+    "cta": "ESITA TAOTLUS",
+    "imageAlt": "Interjöör"
+  },
+  "services": {
+    "title": "Meie teenused",
+    "intro": "Pakume ehitusprojektide täieliku tsükli teenuseid: arhitektuurilisest ideest kuni objekti kasutuselevõtu ja kõigi juriidiliste formaliteetide lõpuleviimiseni.",
+    "items": [
+      {
+        "title": "Projekteerimine",
+        "subtitle": "",
+        "description": "Täielik projekteerimise tugi vastavalt Eesti ehitusnormidele.",
+        "bullets": [
+          "Arhitektuurne ja ehitusprojekteerimine: eskiis, eelprojekt, põhiprojekt ja tööprojekt",
+          "Dokumentatsiooni ettevalmistamine ja kooskõlastamine ehitusloa saamiseks",
+          "Konstruktiivsed lahendused: kandekonstruktsioonide arvutused ja detaileerimine"
+        ]
+      },
+      {
+        "title": "Eriosad ja tehnosüsteemid",
+        "subtitle": "",
+        "description": "Insenerisüsteemide projekteerimine ja integreerimine energiatõhususele keskendudes.",
+        "bullets": [
+          "HVAC: küte, ventilatsioon ja konditsioneerimine",
+          "Elektrivarustus: jõu- ja nõrkvooluvõrgud, hooneautomaatika",
+          "Veevarustus ja kanalisatsioon: sise- ja välisvõrgud"
+        ]
+      },
+      {
+        "title": "Ehitus ja peatöövõtt",
+        "subtitle": "",
+        "description": "Kompleksne ehituse juhtimine ja tööde teostamine võtmedele.",
+        "bullets": [
+          "Peatöövõtt: alltöövõtjate koordineerimine, tähtajad ja eelarve",
+          "Üldehitustööd",
+          "Autorijärelevalve: tööde vastavus projektile"
+        ]
+      },
+      {
+        "title": "Kasutusloa taotlemine",
+        "subtitle": "",
+        "description": "Projekti lõpetamine ja objekti üleandmine.",
+        "bullets": [
+          "Teostusjoonised, varjatud tööde aktid",
+          "Kasutusloa saamine",
+          "Koostöö sõltumatu ehitusjärelevalvega (omanikujärelevalve)"
+        ]
+      }
+    ]
+  },
+  "about": {
+    "title": "MEIST",
+    "p1": "Usume, et ehitus peab olema ettearvatav ja mugav protsess. Seetõttu töötame «ühe akna» põhimõttel — võtame kogu projekti juhtimise enda kanda algusest kuni lõpuni.",
+    "p2": "Katame kogu töötsükli:",
+    "items": [
+      {
+        "label": "Projekteerimine:",
+        "text": "loome arhitektuurse kontseptsiooni ja täpsed inseneriarvutused."
+      },
+      {
+        "label": "Bürokratia:",
+        "text": "hangime ise ehitusload ja läbime kõik asutused."
+      },
+      {
+        "label": "Ehitus:",
+        "text": "ehitame objekti, kontrollides rangelt kvaliteeti, tähtaegu ja eelarvet."
+      },
+      {
+        "label": "Kasutusse võtmine:",
+        "text": "vormistame lõplikud dokumendid ja anname teile võtmed."
+      }
+    ],
+    "p3": "Teie kasu — stressi puudumine. Te ei pea otsima erinevaid täitjaid, neid koordineerima ega kandma riske etappide vahel. Kõige eest vastutab üks ettevõte. Te langetate ainult võtmeotsuseid, kogu rutiini võtame enda kanda.",
+    "p4Label": "Teie ainus partner:",
+    "p4": "juhtime projekti esimesest joonisest valmis objektini.",
+    "imageAlt": "Meist — Koterig"
+  },
+  "contact": {
+    "title": "Võtke meiega ühendust",
+    "subtitle": "Esitage taotlus ja võtame teiega ühendust projekti arutamiseks",
+    "infoTitle": "Kontaktandmed",
+    "addressLabel": "Aadress",
+    "address": "Tallinn, Eesti",
+    "phoneLabel": "Telefon",
+    "emailLabel": "E-post",
+    "nameLabel": "Teie nimi",
+    "messageLabel": "Sõnum",
+    "submit": "Saada taotlus",
+    "submitting": "Saadame...",
+    "success": "Täname! Teie taotlus on saadetud.",
+    "error": "Saatmine ebaõnnestus. Proovige hiljem uuesti."
+  },
+  "footer": {
+    "tagline": "Projekteerime. Ehitame. Üle anname.",
+    "description": "Teie ainus partner kogu teel esimesest joonisest kasutusloani.",
+    "contactsTitle": "Kontaktid",
+    "copyright": "© 2026 Koterig OÜ. Kõik õigused kaitstud."
+  },
+  "portfolio": {
+    "title": "Meie projektid",
+    "intro": "Viime keerukad insenerilahendused kvaliteetseteks objektideks. Iga meie projekt on tulemus rangete ehitusnormide järgimisest, usaldusväärsete tehnoloogiate kasutamisest ja täielikust kontrollist kõigil etappidel: vundamendist kuni kasutusloani.",
+    "more": "Loe lähemalt",
+    "prevImage": "Eelmine pilt",
+    "nextImage": "Järgmine pilt",
+    "close": "Sulge",
+    "projects": [
+      { "title": "Portfoolio 1" },
+      { "title": "Portfoolio 2" },
+      { "title": "Portfoolio 3" },
+      { "title": "Portfoolio 4" }
+    ]
+  },
+  "cookies": {
+    "title": "Kasutame küpsiseid",
+    "p1": "See veebisait kasutab küpsiseid, sealhulgas vajalikke, et tagada selle korrektne toimimine, halduspaneeli autoriseerimine ja saidi kasutamise analüüs.",
+    "p2": "Saiti kasutades kinnitate nõusoleku küpsiste kasutamisega vastavalt meie privaatsuspoliitikale.",
+    "p3": "Saate küpsiste kasutamist hallata või piirata oma brauseri seadetes.",
+    "reject": "Ei nõustu",
+    "accept": "Nõustun"
+  },
+  "common": {
+    "backToTop": "Üles"
+  }
+}

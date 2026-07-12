@@ -1,10 +1,12 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { HiArrowUp } from 'react-icons/hi';
 
 const SCROLL_THRESHOLD = 400;
 
 const BackToTop = () => {
+  const t = useTranslations('common');
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const BackToTop = () => {
   return (
     <button
       type="button"
-      aria-label="Наверх"
+      aria-label={t('backToTop')}
       onClick={scrollToTop}
       className={`fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-[#105483] text-[#fafafa] shadow-lg transition-all duration-300 hover:bg-[#0d4369] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#105483]/40 md:bottom-8 md:right-8 ${
         visible

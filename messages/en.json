@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "title": "Koterig OÜ | Design and Turnkey Construction",
+    "description": "Full-cycle design and construction — from concept to occupancy permit. One contractor for the entire journey.",
+    "portfolioTitle": "Portfolio | Koterig OÜ",
+    "portfolioDescription": "Our projects — Koterig OÜ"
+  },
+  "nav": {
+    "portfolio": "Portfolio",
+    "services": "Services",
+    "about": "About Us",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "langEt": "Estonian",
+    "langRu": "Russian",
+    "langEn": "English"
+  },
+  "hero": {
+    "title": "Full-cycle design and construction — from the first concept and working drawings to commissioning the building.",
+    "subtitle": "One contractor for the entire journey: full accountability, transparent timelines, and no gaps between stages.",
+    "cta": "REQUEST A QUOTE",
+    "imageAlt": "Interior"
+  },
+  "services": {
+    "title": "Our Services",
+    "intro": "We provide full-cycle construction project services: from architectural concept to commissioning and completion of all legal formalities.",
+    "items": [
+      {
+        "title": "Design",
+        "subtitle": "Projekteerimine",
+        "description": "Complete design support in accordance with Estonian building regulations.",
+        "bullets": [
+          "Architectural and structural design: sketch (eskiis), preliminary (eelprojekt), main (põhiprojekt) and working project (tööprojekt)",
+          "Preparation and approval of documentation for building permits (ehitusluba)",
+          "Structural solutions: load-bearing structure calculations and detailing"
+        ]
+      },
+      {
+        "title": "Engineering Systems",
+        "subtitle": "Eriosad ja tehnosüsteemid",
+        "description": "Design and integration of engineering systems with a focus on energy efficiency.",
+        "bullets": [
+          "HVAC: heating, ventilation and air conditioning",
+          "Electrical supply: power and low-voltage networks, building automation",
+          "Water supply and sewage: internal and external networks"
+        ]
+      },
+      {
+        "title": "Construction & General Contracting",
+        "subtitle": "Ehitus ja peatöövõtt",
+        "description": "Comprehensive construction management and turnkey execution.",
+        "bullets": [
+          "General contracting: subcontractor coordination, timelines and budget",
+          "General construction works",
+          "Design supervision (autorijärelevalve): ensuring works match the design"
+        ]
+      },
+      {
+        "title": "Commissioning",
+        "subtitle": "Kasutusloa taotlemine",
+        "description": "Project completion and handover of the building.",
+        "bullets": [
+          "As-built documentation (teostusjoonised), concealed works certificates",
+          "Obtaining occupancy permit (kasutusluba)",
+          "Cooperation with independent construction supervision (omanikujärelevalve)"
+        ]
+      }
+    ]
+  },
+  "about": {
+    "title": "ABOUT US",
+    "p1": "We believe construction should be a predictable and comfortable process. That is why we work on a single-window principle — we take on full project management from the initial idea to completion.",
+    "p2": "We cover the entire cycle:",
+    "items": [
+      {
+        "label": "Design:",
+        "text": "we create the architectural concept and precise engineering calculations."
+      },
+      {
+        "label": "Permits:",
+        "text": "we obtain building permits and handle all authorities ourselves."
+      },
+      {
+        "label": "Construction:",
+        "text": "we build the project, strictly controlling quality, timelines and budget."
+      },
+      {
+        "label": "Commissioning:",
+        "text": "we prepare final documents and hand you the keys."
+      }
+    ],
+    "p3": "Your benefit — no stress. You do not need to find different contractors, coordinate them, or bear risks at stage transitions. One company is responsible for everything. You make only key decisions; we handle all the routine.",
+    "p4Label": "Your single contractor:",
+    "p4": "we manage the project from the first drawing to the finished building.",
+    "imageAlt": "About us — Koterig"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Submit a request and we will get in touch to discuss your project",
+    "infoTitle": "Contact Information",
+    "addressLabel": "Address",
+    "address": "Tallinn, Estonia",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "nameLabel": "Your name",
+    "messageLabel": "Message",
+    "submit": "Submit request",
+    "submitting": "Sending...",
+    "success": "Thank you! Your request has been sent.",
+    "error": "Failed to send. Please try again later."
+  },
+  "footer": {
+    "tagline": "We design. We build. We deliver.",
+    "description": "Your single contractor from the first drawing to occupancy permit.",
+    "contactsTitle": "Contacts",
+    "copyright": "© 2026 Koterig OÜ. All rights reserved."
+  },
+  "portfolio": {
+    "title": "Our Projects",
+    "intro": "We turn complex engineering solutions into quality buildings. Every project is the result of strict compliance with building codes, reliable technologies, and full control at all stages: from foundation to commissioning.",
+    "more": "View more",
+    "prevImage": "Previous image",
+    "nextImage": "Next image",
+    "close": "Close",
+    "projects": [
+      { "title": "Portfolio 1" },
+      { "title": "Portfolio 2" },
+      { "title": "Portfolio 3" },
+      { "title": "Portfolio 4" }
+    ]
+  },
+  "cookies": {
+    "title": "We use cookies",
+    "p1": "This website uses cookies, including essential ones, to ensure proper operation, admin panel authorization, and site usage analysis.",
+    "p2": "By continuing to use the site, you confirm consent to cookie use in accordance with our Privacy Policy.",
+    "p3": "You can manage or restrict cookie use in your browser settings.",
+    "reject": "Decline",
+    "accept": "Accept"
+  },
+  "common": {
+    "backToTop": "Back to top"
+  }
+}

@@ -1,4 +1,8 @@
 // next.config.js
+const createNextIntlPlugin = require('next-intl/plugin');
+
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -7,8 +11,6 @@ const nextConfig = {
   devIndicators: {
     devtools: false,
   },
-  // output: 'export', // Важно для Cloudflare Pages и Next.js 15+ (убери или закомментируй!)
-  // другие настройки можно добавлять ниже, если нужно
 };
 
-module.exports = nextConfig;
+module.exports = withNextIntl(nextConfig);

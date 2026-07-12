@@ -1,14 +1,16 @@
 'use client';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 
 const Contact = () => {
+  const t = useTranslations('contact');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
   });
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -17,12 +19,12 @@ const Contact = () => {
     e.preventDefault();
     setStatus('idle');
     setIsSubmitting(true);
-    
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
       if (res.ok) {
         setStatus('success');
@@ -51,16 +53,13 @@ const Contact = () => {
               className="font-sans font-bold uppercase text-[1.125rem] tracking-[0.04em] mb-4 text-[#105483]"
               style={{ letterSpacing: '0.04em' }}
             >
-              Свяжитесь с нами
+              {t('title')}
             </h2>
             <p
               className="font-sans text-[18px] font-normal leading-[1.7] tracking-wide text-[#105483]"
-              style={{
-                wordSpacing: '0.3em',
-                letterSpacing: '0.02em'
-              }}
+              style={{ wordSpacing: '0.3em', letterSpacing: '0.02em' }}
             >
-              Оставьте заявку, и мы свяжемся с вами для обсуждения вашего проекта
+              {t('subtitle')}
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-12">
@@ -69,37 +68,27 @@ const Contact = () => {
                 className="font-sans font-bold uppercase text-[1.125rem] tracking-[0.04em] mb-6 text-[#105483]"
                 style={{ letterSpacing: '0.04em' }}
               >
-                Контактная информация
+                {t('infoTitle')}
               </h3>
               <div className="space-y-4">
                 <div>
-                  <h4
-                    className="font-sans font-bold text-[16px] mb-2 text-[#105483]"
-                  >
-                    Адрес
+                  <h4 className="font-sans font-bold text-[16px] mb-2 text-[#105483]">
+                    {t('addressLabel')}
                   </h4>
                   <p
                     className="font-sans text-[18px] font-normal leading-[1.7] tracking-wide text-[#105483]"
-                    style={{
-                      wordSpacing: '0.3em',
-                      letterSpacing: '0.02em'
-                    }}
+                    style={{ wordSpacing: '0.3em', letterSpacing: '0.02em' }}
                   >
-                    Таллин, Эстония
+                    {t('address')}
                   </p>
                 </div>
                 <div>
-                  <h4
-                    className="font-sans font-bold text-[16px] mb-2 text-[#105483]"
-                  >
-                    Телефон
+                  <h4 className="font-sans font-bold text-[16px] mb-2 text-[#105483]">
+                    {t('phoneLabel')}
                   </h4>
                   <div
                     className="flex items-center space-x-2 font-sans text-[18px] font-normal leading-[1.7] tracking-wide text-[#105483]"
-                    style={{
-                      wordSpacing: '0.3em',
-                      letterSpacing: '0.02em'
-                    }}
+                    style={{ wordSpacing: '0.3em', letterSpacing: '0.02em' }}
                   >
                     <span>+372 5371 5636</span>
                     <a
@@ -123,17 +112,12 @@ const Contact = () => {
                   </div>
                 </div>
                 <div>
-                  <h4
-                    className="font-sans font-bold text-[16px] mb-2 text-[#105483]"
-                  >
-                    Email
+                  <h4 className="font-sans font-bold text-[16px] mb-2 text-[#105483]">
+                    {t('emailLabel')}
                   </h4>
                   <p
                     className="font-sans text-[18px] font-normal leading-[1.7] tracking-wide text-[#105483]"
-                    style={{
-                      wordSpacing: '0.3em',
-                      letterSpacing: '0.02em'
-                    }}
+                    style={{ wordSpacing: '0.3em', letterSpacing: '0.02em' }}
                   >
                     info@koterig.eu
                   </p>
@@ -142,61 +126,53 @@ const Contact = () => {
             </div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label
-                  className="block font-sans font-normal text-[16px] mb-2 text-[#105483]"
-                >
-                  Ваше имя
+                <label className="block font-sans font-normal text-[16px] mb-2 text-[#105483]">
+                  {t('nameLabel')}
                 </label>
                 <input
                   type="text"
                   name="name"
                   className="w-full px-4 py-2 bg-transparent text-[#105483] border border-[#105483] rounded-lg focus:ring-2 focus:ring-[#105483] focus:border-transparent font-sans"
                   value={formData.name}
-                  onChange={e => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
                 />
               </div>
               <div>
-                <label
-                  className="block font-sans font-normal text-[16px] mb-2 text-[#105483]"
-                >
-                  Email
+                <label className="block font-sans font-normal text-[16px] mb-2 text-[#105483]">
+                  {t('emailLabel')}
                 </label>
                 <input
                   type="email"
                   name="email"
                   className="w-full px-4 py-2 bg-transparent text-[#105483] border border-[#105483] rounded-lg focus:ring-2 focus:ring-[#105483] focus:border-transparent font-sans"
                   value={formData.email}
-                  onChange={e => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
                 />
               </div>
               <div>
-                <label
-                  className="block font-sans font-normal text-[16px] mb-2 text-[#105483]"
-                >
-                  Телефон
+                <label className="block font-sans font-normal text-[16px] mb-2 text-[#105483]">
+                  {t('phoneLabel')}
                 </label>
                 <input
                   type="tel"
                   name="phone"
                   className="w-full px-4 py-2 bg-transparent text-[#105483] border border-[#105483] rounded-lg focus:ring-2 focus:ring-[#105483] focus:border-transparent font-sans"
                   value={formData.phone}
-                  onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   required
                 />
               </div>
               <div>
-                <label
-                  className="block font-sans font-normal text-[16px] mb-2 text-[#105483]"
-                >
-                  Сообщение
+                <label className="block font-sans font-normal text-[16px] mb-2 text-[#105483]">
+                  {t('messageLabel')}
                 </label>
                 <textarea
                   name="message"
                   className="w-full px-4 py-2 bg-transparent text-[#105483] border border-[#105483] rounded-lg focus:ring-2 focus:ring-[#105483] focus:border-transparent h-32 font-sans"
                   value={formData.message}
-                  onChange={e => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
                 />
               </div>
@@ -214,28 +190,28 @@ const Contact = () => {
                 {isSubmitting ? (
                   <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                     className="inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-2"
                   />
                 ) : null}
-                {isSubmitting ? 'Отправляем...' : 'Отправить заявку'}
+                {isSubmitting ? t('submitting') : t('submit')}
               </motion.button>
               {status === 'success' && (
-                <motion.p 
+                <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-green-600 text-center font-sans"
                 >
-                  Спасибо! Ваша заявка отправлена.
+                  {t('success')}
                 </motion.p>
               )}
               {status === 'error' && (
-                <motion.p 
+                <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-red-600 text-center font-sans"
                 >
-                  Ошибка отправки. Попробуйте позже.
+                  {t('error')}
                 </motion.p>
               )}
             </form>

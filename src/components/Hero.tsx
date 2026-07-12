@@ -1,9 +1,11 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import SiteHeader from './SiteHeader';
 
 const Hero = () => {
+  const t = useTranslations('hero');
   const parallaxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const Hero = () => {
       <div ref={parallaxRef} className="absolute inset-0 -z-10">
         <Image
           src="/hero-koterig.png"
-          alt="Интерьер"
+          alt={t('imageAlt')}
           fill
           priority
           className="object-cover"
@@ -38,13 +40,13 @@ const Hero = () => {
             className="font-sans font-bold uppercase text-[1.125rem] tracking-[0.04em]"
             style={{ letterSpacing: '0.04em' }}
           >
-            Полный цикл проектирования и строительства - от первой концепции и рабочих чертежей до ввода объекта в эксплуатацию.
+            {t('title')}
           </h1>
           <p
             className="font-sans text-[18px] font-normal leading-[1.7] tracking-wide"
             style={{ wordSpacing: '0.3em', letterSpacing: '0.02em' }}
           >
-            Один подрядчик на всём пути: полная ответственность, прозрачные сроки и никаких разрывов между этапами.
+            {t('subtitle')}
           </p>
         </div>
         <a
@@ -52,7 +54,7 @@ const Hero = () => {
           className="pointer-events-auto border border-white text-white px-7 py-2 rounded-md text-sm md:text-base font-sans font-bold bg-transparent hover:bg-white/10 transition-colors duration-200 uppercase tracking-[0.04em]"
           style={{ backdropFilter: 'blur(0px)' }}
         >
-          ОСТАВЬТЕ ЗАЯВКУ
+          {t('cta')}
         </a>
       </div>
       <SiteHeader />
