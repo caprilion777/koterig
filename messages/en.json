@@ -124,10 +124,10 @@
     "nextImage": "Next image",
     "close": "Close",
     "projects": [
-      { "title": "Portfolio 1" },
-      { "title": "Portfolio 2" },
-      { "title": "Portfolio 3" },
-      { "title": "Portfolio 4" }
+      { "title": "Facade works" },
+      { "title": "Concrete works" },
+      { "title": "Wooden housebuilding" },
+      { "title": "House extensions" }
     ]
   },
   "cookies": {

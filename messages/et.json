@@ -124,10 +124,10 @@
     "nextImage": "Järgmine pilt",
     "close": "Sulge",
     "projects": [
-      { "title": "Portfoolio 1" },
-      { "title": "Portfoolio 2" },
-      { "title": "Portfoolio 3" },
-      { "title": "Portfoolio 4" }
+      { "title": "Fassaaditööd" },
+      { "title": "Betoonitööd" },
+      { "title": "Puitmajade ehitus" },
+      { "title": "Majade laiendamine" }
     ]
   },
   "cookies": {
