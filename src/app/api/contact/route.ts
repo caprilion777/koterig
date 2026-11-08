@@ -83,6 +83,7 @@ async function sendViaSmtp(
     connectionTimeout: 10_000,
     greetingTimeout: 10_000,
     socketTimeout: 10_000,
+	family: 4, // <--- ДОБАВЬТЕ ЭТУ СТРОКУ
   });
 
   await transporter.sendMail({
