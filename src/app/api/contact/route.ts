@@ -83,8 +83,8 @@ async function sendViaSmtp(
     connectionTimeout: 10_000,
     greetingTimeout: 10_000,
     socketTimeout: 10_000,
-	family: 4, // <--- ДОБАВЬТЕ ЭТУ СТРОКУ
-  });
+    family: 4, 
+  } as any); // <--- Добавьте "as any" в конце
 
   await transporter.sendMail({
     from: `"Koterig website" <${smtpUser}>`,
