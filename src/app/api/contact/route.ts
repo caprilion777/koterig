@@ -73,9 +73,9 @@ async function sendViaSmtp(
   }
 
   const transporter = nodemailer.createTransport({
-    host: smtpHost,
-    port: smtpPort,
-    secure: smtpPort === 465,
+    host: "smtp.zone.ee", // Жестко прописываем текстом
+    port: 465,            // Жестко прописываем цифрой
+    secure: true,
     auth: {
       user: smtpUser,
       pass: smtpPass,
@@ -83,8 +83,8 @@ async function sendViaSmtp(
     connectionTimeout: 10_000,
     greetingTimeout: 10_000,
     socketTimeout: 10_000,
-    family: 4, 
-  } as any); // <--- Добавьте "as any" в конце
+    family: 4,
+  } as any);
 
   await transporter.sendMail({
     from: `"Koterig website" <${smtpUser}>`,
