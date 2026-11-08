@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 const projectImages: string[][] = [
   ['/portfolio/a0001.jpg', '/portfolio/a0002.jpg', '/portfolio/a0003.jpg', '/portfolio/a0004.jpg'],
   ['/portfolio/b0001.jpg', '/portfolio/b0002.jpg', '/portfolio/b0003.jpg', '/portfolio/b0004.jpg'],
-  ['/portfolio/c0001.jpg', '/portfolio/c0002.jpg', '/portfolio/c0003.jpg', '/portfolio/C0004.jpg'],
+  ['/portfolio/c0001.jpg', '/portfolio/c0002.jpg', '/portfolio/c0003.jpg', '/portfolio/c0004.jpg'],
   ['/portfolio/d0001.jpg', '/portfolio/d0002.jpg', '/portfolio/d0003.jpg', '/portfolio/d0004.jpg'],
 ];
 
